@@ -6,7 +6,6 @@ import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
 const App = ({ history }) => {
-    { console.log(history) }
     return (
         <div>
             <StylesProvider>
