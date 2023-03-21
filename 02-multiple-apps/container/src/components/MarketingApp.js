@@ -5,17 +5,18 @@ import { mount } from 'marketing/MarketingApp';
 const MarketingApp = () => {
     const ref = useRef(null);
     const history = useHistory();
-   
+
     useEffect(() => {
-        mount(ref.current, {
-            onNavigate: ({pathname: nextPathName}) => { // location.pathname
-                const {pathname} = location;
+        const { onParentNavigate } = mount(ref.current, {
+            onNavigate: ({ pathname: nextPathName }) => { // location.pathname
+                const { pathname } = location;
                 if (pathname !== nextPathName) {
                     history.push(nextPathName);
-                }                
+                }
             }
         })
-    })
+        history.listen(onParentNavigate);
+    }, [])
     return (
         <div ref={ref} />
     )
